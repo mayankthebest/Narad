@@ -1,13 +1,13 @@
 ﻿using System;
 using Narad.Extensions.Configuration.CosmosDBBase;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+
 
 namespace Narad.Extensions.Configuration.CosmosDBCore
 {
     public static class CosmosDBConfigurationBuilderExtensionsCore
     {
-        public static IConfigurationBuilder AddCosmosDB(this IConfigurationBuilder configurationBuilder, IHostingEnvironment environment)
+        public static IConfigurationBuilder AddCosmosDB(this IConfigurationBuilder configurationBuilder, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             if (configurationBuilder == null)
             {

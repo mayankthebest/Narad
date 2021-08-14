@@ -9,7 +9,7 @@ namespace Narad.Extensions.Configuration.CosmosDBBase
 {
     public class CosmosDBConfigurationProvider : ConfigurationProvider, IConfigurationSource
     {
-        private CosmosDBClientSettings _settings;
+        private readonly CosmosDBClientSettings _settings;
         /// <summary>
         /// The prefix (<see cref="IConfigurationSection"/> under which all Spring Cloud Config Server
         /// configuration settings (<see cref="CosmosDBClientSettings"/> are found.
@@ -58,8 +58,20 @@ namespace Narad.Extensions.Configuration.CosmosDBBase
             }
 
             var clientConfigsection = config.GetSection(configPrefix);
-            clientConfigsection.Bind(settings);
+
+            if (clientConfigsection.Exists())
+            {
+                clientConfigsection.Bind(settings);
+            }
+
+            if (!string.IsNullOrEmpty(settings.ConnectionString))
+            {
+                var cs = new CosmosDBConnectionString(settings.ConnectionString);
+                settings.EndpointUrl = cs.ServiceEndpoint.ToString();
+                settings.PrimaryKey = cs.AuthKey;
+            }
         }
+
 
         public override void Load()
         {
@@ -77,9 +89,9 @@ namespace Narad.Extensions.Configuration.CosmosDBBase
                 {
                     Data[configurationItem.Key] = configurationItem.Value;
                 }
-                continue;
             }
         }
+
 
         private Dictionary<string, string> ParseProperties(JObject result)
         {
