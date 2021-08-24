@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Narad.Extensions.Configuration.CosmosDBSampleClient.Model
+﻿namespace CosmosDbConfigurationSampleNet5
 {
     /// <summary>
     /// An object used with the DI Options mechanism for exposing the data retrieved 

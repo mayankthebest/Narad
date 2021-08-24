@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>1cda345d-ffdf-45ae-bb0b-43c917c01b81</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Narad.Extensions.Configuration.CosmosDBCore\Narad.Extensions.Configuration.CosmosDBCore.csproj" />
+  </ItemGroup>
+
+</Project>

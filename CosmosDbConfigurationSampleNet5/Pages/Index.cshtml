@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">CosmosDB configuration provider</h1>
+
+    Here is what was returned from the database.
+
+    <div class="table table-striped">
+        <div class="row">
+            <div class="col-1">Id</div>
+            <div class="col">@Model.Config.Value.Id</div>
+        </div>
+    </div>
+</div>
